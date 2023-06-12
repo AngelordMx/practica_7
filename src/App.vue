@@ -3,6 +3,7 @@ import {ref} from 'vue'
 const name = 'vue dinamico';
 
 //netidi - methods
+const Arraynumeros=ref([]);
 const counter = ref (0)
 const incremento = () => {
   console.log('aumentar contador')
@@ -21,6 +22,11 @@ const reseteo = () => {
   counter.value = 0;
   console.log(counter);
 }
+
+const numfav = () => {
+  Arraynumeros.value.push(counter.value);
+
+}
 </script>
 
 <template>
@@ -37,6 +43,16 @@ const reseteo = () => {
   <button @click="incremento">Aumentar</button>
   <button @click="reduccion">Reducir</button>
   <button @click="reseteo">Resetear</button>
+  
+  <button @click="numfav"> Add</button>
+  <ul>
+    <li
+    v-for="{numero, index} in Arraynumeros"
+    :key="numero"
+    >{{ index }} - {{ numero  }}
+    </li>
+  </ul>
+
   
 
 </template>
